@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+:root {
+    --color-principal: #EEA847;
+    --color-principal-hover: #d4913a;
+    --color-error: #ef4444;
+    --color-exitoso: #22c55e;
+    --color-contenedor: rgba(255, 220, 150, 0.18);
+    --color-texto: #1a1a1a;
+    --color-link: #EEA847;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: transparent;
+    color: var(--color-texto);
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url('../img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(6px);
+    transform: scale(1.05);
+    z-index: -1;
+}
+
+/* Fallback si no hay imagen */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+    z-index: -2;
+}
+
+/* ── Contenedor ─────────────────────────────── */
+#vista-registro,
+#vista-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.contenedor-principal {
+    background: var(--color-contenedor);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    padding: 2.5rem 2rem;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+
+/* ── Títulos ────────────────────────────────── */
+h2 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1.8rem;
+    letter-spacing: -0.3px;
+}
+
+/* ── Campos ─────────────────────────────────── */
+.datos-entrada {
+    margin-bottom: 1.3rem;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+}
+
+input:not([type="checkbox"]) {
+    width: 100%;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    transition: border-color 0.25s, background 0.25s;
+}
+
+input:not([type="checkbox"])::placeholder {
+    color: rgba(255,255,255,0.45);
+}
+
+input:not([type="checkbox"]):focus {
+    outline: none;
+    border-color: var(--color-principal);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Mensajes de error inline ───────────────── */
+.mensaje-error {
+    display: none;
+    color: var(--color-error);
+    font-size: 0.75rem;
+    margin-top: 4px;
+}
+
+/* ── Barra de seguridad ─────────────────────── */
+.barra-seguridad-wrap {
+    height: 4px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 2px;
+    margin-top: 6px;
+    overflow: hidden;
+}
+
+.nivel-seguridad {
+    height: 100%;
+    width: 0%;
+    background: var(--color-error);
+    border-radius: 2px;
+    transition: width 0.4s ease, background 0.4s ease;
+}
+
+/* ── Mostrar contraseña ─────────────────────── */
+.mostrar-contrasena {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.mostrar-contrasena input[type="checkbox"] {
+    width: auto;
+    cursor: pointer;
+    accent-color: var(--color-principal);
+}
+
+.mostrar-contrasena label {
+    margin: 0;
+    font-size: 0.8rem;
+    cursor: pointer;
+    color: rgba(255,255,255,0.7);
+    font-weight: 400;
+}
+
+/* ── Feedback general ───────────────────────── */
+.mensaje-feedback {
+    font-size: 0.82rem;
+    min-height: 1.1rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    color: rgba(255,255,255,0.8);
+    transition: color 0.2s;
+}
+
+.mensaje-feedback.error  { color: var(--color-error); }
+.mensaje-feedback.exito  { color: var(--color-exitoso); }
+
+/* ── Botón ───────────────────────────────────── */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: var(--color-principal);
+    border: none;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.2s, transform 0.1s;
+    letter-spacing: 0.3px;
+}
+
+button[type="submit"]:hover {
+    background: var(--color-principal-hover);
+}
+
+button[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+/* ── Link de cambio de vista ────────────────── */
+.link-cambio {
+    text-align: center;
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+}
+
+.link-cambio a {
+    color: var(--color-link);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link-cambio a:hover {
+    text-decoration: underline;
+}
