@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://inicio-basedatos-production.up.railway.app';
 
 // ── Vistas ───────────────────────────────────────────────────────────────────
 const vistaRegistro = document.getElementById('vista-registro');
