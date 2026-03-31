@@ -14,27 +14,6 @@
         <button id="cerrar-sesion">Cerrar Sesión</button>
     </div>
 
-    <script>
-        
-        const token = localStorage.getItem('token');
-        if (!token) {
-            window.location.href = 'index.html';
-        }
-
-        
-        try {
-            const payload = JSON.parse(atob(token.split('.')[1]));
-            document.getElementById('nombre-usuario').textContent = payload.username;
-        } catch {
-            document.getElementById('nombre-usuario').textContent = 'Usuario';
-        }
-
-        // Cerrar sesión
-        document.getElementById('cerrar-sesion').addEventListener('click', () => {
-            localStorage.removeItem('token');
-            window.location.href = 'index.html';
-        });
-    </script>
-
+    <script src="js/dashboard.js"></script>
 </body>
 </html>
